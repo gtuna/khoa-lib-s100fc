@@ -1,5 +1,4 @@
 #pragma once
-
 #include "XML_Item.h"
 #include "InformationType.h"
 
@@ -15,7 +14,6 @@ private:
 	std::unordered_map<std::wstring, InformationType> informationType;
 
 public:
-	//void GetContents(MSXML2::IXMLDOMNodePtr pNode);
 	void GetContents(pugi::xml_node& node);
 	
 	std::unordered_map<std::wstring, InformationType>& GetInformationTypePointer();

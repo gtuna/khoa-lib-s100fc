@@ -1,11 +1,7 @@
-// FeatureCatalog.cpp : 해당 DLL의 초기화 루틴을 정의합니다.
-//
-
+// FeatureCatalog.cpp : Define the initialization routine of the corresponding DLL.
 #include "stdafx.h"
 #include "FeatureCatalogue.h"
 #include "Role.h"
-
-//#include "..\\DLL_MessageProcess\\DLL_MessageProcess.h"
 
 #include <atlstr.h>
 #ifdef _DEBUG
@@ -14,7 +10,7 @@
 
 FeatureCatalogue::FeatureCatalogue()
 {
-	//producer = NULL;
+
 }
 FeatureCatalogue::FeatureCatalogue(std::wstring path)
 {
@@ -42,6 +38,7 @@ SimpleAttribute* FeatureCatalogue::GetSimpleAttribute(std::wstring code)
 		return itor->second;
 	}
 }
+
 SimpleAttribute* FeatureCatalogue::GetSimpleAttributeFromName(std::wstring name)
 {
 	for (auto i = simpleAttributes.GetSimpleAttributePointer().begin();
@@ -53,9 +50,7 @@ SimpleAttribute* FeatureCatalogue::GetSimpleAttributeFromName(std::wstring name)
 			return i->second;
 		}
 	}
-
 	return nullptr;
-
 }
 
 ComplexAttribute* FeatureCatalogue::GetComplexAttribute(std::wstring code)
@@ -77,7 +72,6 @@ ComplexAttribute* FeatureCatalogue::GetComplexAttributeFromName(std::wstring nam
 		if (i->second.GetName().compare(name) == 0)
 			return &i->second;
 	}
-
 	return nullptr;
 }
 
@@ -94,7 +88,6 @@ FeatureType* FeatureCatalogue::GetFeatureType(std::wstring code)
 FeatureTypes& FeatureCatalogue::GetFeatureTypesPointer()
 {
 	return featureTypes;
-
 }
 
 FeatureType* FeatureCatalogue::GetFeatureTypeName(std::wstring name)
@@ -106,21 +99,12 @@ FeatureType* FeatureCatalogue::GetFeatureTypeName(std::wstring name)
 		if (i->second.GetName().compare(name) == 0)
 			return &i->second;
 	}
-
 	return nullptr;
-
-	//auto itor = featureTypes.GetFeatureTypePointer().find(code);
-
-	//if (itor == featureTypes.GetFeatureTypePointer().end())
-	//	return nullptr; // not found
-	//else
-	//	return &itor->second;
 }
 
 
 FeatureType* FeatureCatalogue::GetFeatureTypeFromIndex(int indexnum)
 {
-	//auto itor = featureTypes.GetFeatureTypePointer().find(code);
 	int num = 0;
 	for (auto i= featureTypes.GetFeatureTypePointer().begin(); i!=featureTypes.GetFeatureTypePointer().end(); i++)
 	{
@@ -130,17 +114,9 @@ FeatureType* FeatureCatalogue::GetFeatureTypeFromIndex(int indexnum)
 			OutputDebugString(L"");
 			return &i->second;
 		}
-		
 		num++;
 	}
-
-
 	return nullptr;
-
-	//if (itor == featureTypes.GetFeatureTypePointer().end())
-	//	return NULL; // not found
-	//else
-	//	return &itor->second;
 }
 
 InformationType* FeatureCatalogue::GetInformationType(std::wstring code)
@@ -163,7 +139,6 @@ InformationType* FeatureCatalogue::GetInformationTypeFromName(std::wstring name)
 		if (itor->second.GetName().compare(name) == 0)
 			return &itor->second;
 	}
-
 	return NULL;
 }
 
@@ -186,7 +161,6 @@ FeatureAssociation* FeatureCatalogue::GetFeatureAssociationFromName(std::wstring
 		if (itor->second.GetName().compare(name) == 0)
 			return &itor->second;
 	}
-
 	return NULL;
 }
 
@@ -209,7 +183,6 @@ InformationAssociation* FeatureCatalogue::GetInformationAssociationFromName(std:
 		if (itor->second.GetName().compare(name) == 0)
 			return &itor->second;
 	}
-
 	return NULL;
 }
 
@@ -232,91 +205,9 @@ Role* FeatureCatalogue::GetRoleFromName(std::wstring name)
 		if (itor->second->GetName().compare(name) == 0)
 			return itor->second;
 	}
-
 	return NULL;
 }
 
-//void FeatureCatalogue::GetContents(MSXML2::IXMLDOMNodePtr pNode)
-//{
-//	USES_CONVERSION;
-//	MSXML2::IXMLDOMNodeListPtr pNodeList = pNode->GetchildNodes();
-//
-//	int cnt = pNodeList->Getlength();
-//	for (int i = 0; i < cnt; i++) {
-//		MSXML2::IXMLDOMNodePtr pChildNode = pNodeList->Getitem(i);
-//		if (pChildNode == NULL)
-//			continue;
-//
-//		if (!pChildNode->baseName)
-//			continue;
-//
-//		std::string str = std::string(W2A(pChildNode->baseName));
-//
-//		if (str.compare("name") == 0)
-//		{
-//			name = pChildNode->Gettext();
-//		}
-//		//else if (str.compare("product") == 0)
-//		//{
-//		//	product = pChildNode->Gettext();
-//		//}
-//		else if (str.compare("scope") == 0)
-//		{
-//			scope = pChildNode->Gettext();
-//		}
-//		else if (str.compare("fieldOfApplication") == 0)
-//		{
-//			//fieldOfApplication = pChildNode->Gettext();
-//			std::wstring value = pChildNode->Gettext();
-//			SetFieldOfApplication(value);
-//		}
-//		else if (str.compare("versionNumber") == 0)
-//		{
-//			versionNumber = pChildNode->Gettext();
-//		}
-//		else if (str.compare("versionDate") == 0)
-//		{
-//			versionDate = pChildNode->Gettext();
-//		}
-//		else if (str.compare("producer") == 0)
-//		{
-//			producer.GetContents(pChildNode);
-//		}
-//		else if (str.compare("S100_FC_DefinitionSources") == 0)
-//		{
-//			definitionSources.GetContents(pChildNode);
-//		}
-//		else if (str.compare("S100_FC_SimpleAttributes") == 0)
-//		{
-//			simpleAttributes.GetContents(pChildNode);
-//		}
-//		else if (str.compare("S100_FC_ComplexAttributes") == 0)
-//		{
-//			complexAttributes.GetContents(pChildNode);
-//		}
-//		else if (str.compare("S100_FC_Roles") == 0)
-//		{
-//			roles.GetContents(pChildNode);
-//		}
-//		else if (str.compare("S100_FC_InformationAssociations") == 0)
-//		{
-//			informationAssociations.GetContents(pChildNode);
-//		}
-//		else if (str.compare("S100_FC_FeatureAssociations") == 0)
-//		{
-//			featureAssociations.GetContents(pChildNode);
-//		}
-//		else if (str.compare("S100_FC_InformationTypes") == 0)
-//		{
-//			informationTypes.GetContents(pChildNode);
-//		}
-//		else if (str.compare("S100_FC_FeatureTypes") == 0)
-//		{
-//			featureTypes.GetContents(pChildNode);
-//		}
-//	}
-//	OutputDebugString(L"");
-//}
 void FeatureCatalogue::GetContents(pugi::xml_node& node)
 {
 	//Modification plan : Check if there are any elements and add the contents.
@@ -331,21 +222,12 @@ void FeatureCatalogue::GetContents(pugi::xml_node& node)
 			{
 				name = pugi::as_wide(instruction.child_value());
 			}
-			else
-			{
-				OutputDebugString(L"S100FC:name value is null");
-				////KRS_MSG_PROCESS::SendMessageToTargetWindow(KRS_MSG_WARNING, L"S100FC:name value is null",//KRS_MSG_PROCESS::Developer_Mode,//KRS_MSG_PROCESS::FC);
-			}
 		}
 		else if (!strcmp(instructionName, "S100FC:scope"))
 		{
 			if (instruction.child_value() != nullptr)
 			{
 				scope = pugi::as_wide(instruction.child_value());
-			}
-			else
-			{
-//				//KRS_MSG_PROCESS::SendMessageToTargetWindow(KRS_MSG_INFO, L"S100FC:scope value is null",//KRS_MSG_PROCESS::Developer_Mode,//KRS_MSG_PROCESS::FC);
 			}
 		}
 		else if (!strcmp(instructionName, "S100FC:fieldOfApplication"))
@@ -355,20 +237,12 @@ void FeatureCatalogue::GetContents(pugi::xml_node& node)
 				std::string value = instruction.child_value();
 				SetFieldOfApplication(value);
 			}
-			else
-			{
-//				//KRS_MSG_PROCESS::SendMessageToTargetWindow(KRS_MSG_WARNING, L"S100FC:fieldOfApplication value is null",//KRS_MSG_PROCESS::Developer_Mode,//KRS_MSG_PROCESS::FC);
-			}
 		} 
 		else if (!strcmp(instructionName, "S100FC:versionNumber"))
 		{
 			if (instruction.child_value() != nullptr)
 			{
 				versionNumber = pugi::as_wide(instruction.child_value());
-			}
-			else
-			{
-//				//KRS_MSG_PROCESS::SendMessageToTargetWindow(KRS_MSG_WARNING, L"S100FC:versionNumber value is null",//KRS_MSG_PROCESS::Developer_Mode,//KRS_MSG_PROCESS::FC);
 			}
 		}
 		else if (!strcmp(instructionName, "S100FC:versionDate"))
@@ -377,61 +251,47 @@ void FeatureCatalogue::GetContents(pugi::xml_node& node)
 			{
 				versionDate = pugi::as_wide(instruction.child_value());
 			}
-			else
-			{
-//				//KRS_MSG_PROCESS::SendMessageToTargetWindow(KRS_MSG_WARNING, L"S100FC:versionDate value is null",//KRS_MSG_PROCESS::Developer_Mode,//KRS_MSG_PROCESS::FC);
-			}
 		}
 		else if (!strcmp(instructionName, "S100FC:producer"))
 		{
 			producer.GetContents(instruction);
-//			//KRS_MSG_PROCESS::SendMessageToTargetWindow(KRS_MSG_INFO, L"S100FC:producer setting Clear",//KRS_MSG_PROCESS::Developer_Mode,//KRS_MSG_PROCESS::FC);
 		}
 		else if (!strcmp(instructionName, "S100FC:S100_FC_definitionSources"))
 		{
 			definitionSources.GetContents(instruction);
-//			//KRS_MSG_PROCESS::SendMessageToTargetWindow(KRS_MSG_INFO, L"S100FC:S100_FC_definitionSources setting Clear",//KRS_MSG_PROCESS::Developer_Mode,//KRS_MSG_PROCESS::FC);
 		}
 		else if (!strcmp(instructionName, "S100FC:S100_FC_SimpleAttributes"))
 		{
 			simpleAttributes.GetContents(instruction);
-//			//KRS_MSG_PROCESS::SendMessageToTargetWindow(KRS_MSG_INFO, L"S100FC:S100_FC_SimpleAttributes setting Clear",//KRS_MSG_PROCESS::Developer_Mode,//KRS_MSG_PROCESS::FC);
 		}
 		else if (!strcmp(instructionName, "S100FC:S100_FC_ComplexAttributes"))
 		{
 			complexAttributes.GetContents(instruction);
-//			//KRS_MSG_PROCESS::SendMessageToTargetWindow(KRS_MSG_INFO, L"S100FC:S100_FC_ComplexAttributes setting Clear",//KRS_MSG_PROCESS::Developer_Mode,//KRS_MSG_PROCESS::FC);
 		}
 		else if (!strcmp(instructionName, "S100FC:S100_FC_Roles"))
 		{
 			roles.GetContents(instruction);
-//			//KRS_MSG_PROCESS::SendMessageToTargetWindow(KRS_MSG_INFO, L"S100FC:S100_FC_Roles setting Clear",//KRS_MSG_PROCESS::Developer_Mode,//KRS_MSG_PROCESS::FC);
 		}
 		else if (!strcmp(instructionName, "S100FC:S100_FC_InformationAssociations"))
 		{
 			informationAssociations.GetContents(instruction);
-//			//KRS_MSG_PROCESS::SendMessageToTargetWindow(KRS_MSG_INFO, L"S100FC:S100_FC_InformationAssociations setting Clear",//KRS_MSG_PROCESS::Developer_Mode, //KRS_MSG_PROCESS::FC);
 		}
 		else if (!strcmp(instructionName, "S100FC:S100_FC_FeatureAssociations"))
 		{
 			featureAssociations.GetContents(instruction);
-//			//KRS_MSG_PROCESS::SendMessageToTargetWindow(KRS_MSG_INFO, L"S100FC:S100_FC_FeatureAssociations setting Clear",//KRS_MSG_PROCESS::Developer_Mode,//KRS_MSG_PROCESS::FC);
 		}
 		else if (!strcmp(instructionName, "S100FC:S100_FC_InformationTypes"))
 		{
 			informationTypes.GetContents(instruction);
-//			//KRS_MSG_PROCESS::SendMessageToTargetWindow(KRS_MSG_INFO, L"S100FC:S100_FC_InformationTypes setting Clear",//KRS_MSG_PROCESS::Developer_Mode,//KRS_MSG_PROCESS::FC);
 		}
 		else if (!strcmp(instructionName, "S100FC:S100_FC_FeatureTypes"))
 		{
 			featureTypes.GetContents(instruction);
-//			//KRS_MSG_PROCESS::SendMessageToTargetWindow(KRS_MSG_INFO, L"S100FC:S100_FC_FeatureTypes setting Clear",//KRS_MSG_PROCESS::Developer_Mode,//KRS_MSG_PROCESS::FC);
 		}
 		else  //Unspecified value
 		{
 			std::wstring anotherName = pugi::as_wide(instructionName);
 			anotherName.append(L"is another FCDateName");
-//			//KRS_MSG_PROCESS::SendMessageToTargetWindow(KRS_MSG_INFO, anotherName.c_str(),//KRS_MSG_PROCESS::Developer_Mode,//KRS_MSG_PROCESS::FC);
 		}
 	}
 
@@ -450,7 +310,6 @@ void FeatureCatalogue::SetFullAssociations()
 		InformationType *it = &itor->second;
 		SetSubAssociation(it);
 	}
-
 }
 
 void FeatureCatalogue::SetSubAssociation(FeatureType* ft)
@@ -472,7 +331,6 @@ void FeatureCatalogue::SetSubAssociation(FeatureType* ft)
 		auto bindedinformationName = ib->GetInformationTypePointer().GetReference();
 		SetInformationAssociationFromSuperType(ft, bindedinformationName, ib->GetRolePointer().GetReference(), ib->GetAssociationPointer().GetReference());
 	}
-
 	return;
 }
 
@@ -486,17 +344,14 @@ void FeatureCatalogue::SetSubAssociation(InformationType* it)
 		auto bindedinformationName = ib->GetInformationTypePointer().GetReference();
 		SetInformationAssociationFromSuperType(it, bindedinformationName, ib->GetRolePointer().GetReference(), ib->GetAssociationPointer().GetReference());
 	}
-
 	return;
 }
-
 
 void FeatureCatalogue::SetFeatureAssociationFromSuperType(FeatureType* ft, std::wstring superTypeName, std::wstring roleName, std::wstring associationName)
 {
 	for (auto fti = featureTypes.GetFeatureTypePointer().begin(); fti != featureTypes.GetFeatureTypePointer().end(); fti++)
 	{
 		auto currentFeautreType = &fti->second;
-		//auto currentFeautreCode = currentFeautreType->code.GetValueString();
 		auto currentFeautreCode = currentFeautreType->GetCodeAsWString();
 
 		if (superTypeName.compare(currentFeautreCode) == 0)
@@ -508,7 +363,6 @@ void FeatureCatalogue::SetFeatureAssociationFromSuperType(FeatureType* ft, std::
 
 		if (superTypeName.compare(currentFeautreType->GetSuperType()) == 0)
 		{
-			//AddFeatureBinding(ft, currentFeautreType->code.GetValueString(), roleName, associationName);
 			AddFeatureBinding(ft, currentFeautreType->GetCodeAsWString(), roleName, associationName);
 
 			if (currentFeautreType->GetSuperType().size() > 0)
@@ -525,7 +379,6 @@ void FeatureCatalogue::SetInformationAssociationFromSuperType(FeatureType* ft, s
 	for (auto iti = informationTypes.GetInformationTypePointer().begin(); iti != informationTypes.GetInformationTypePointer().end(); iti++)
 	{
 		auto currentInformationType = &iti->second;
-		//auto currentInformationCode = currentInformationType->code.GetValueString();
 		auto currentInformationCode = currentInformationType->GetCodeAsWString();
 		
 		if (superTypeName.compare(currentInformationCode) == 0)
@@ -537,16 +390,13 @@ void FeatureCatalogue::SetInformationAssociationFromSuperType(FeatureType* ft, s
 
 		if (superTypeName.compare(currentInformationType->GetSuperType()) == 0)
 		{
-			//AddInformationBinding(ft, currentInformationType->code.GetValueString(), roleName, associationName);
 			AddInformationBinding(ft, currentInformationType->GetCodeAsWString(), roleName, associationName);
-
 			if (currentInformationType->GetSuperType().size() > 0)
 			{
 				SetInformationAssociationFromSuperType(ft, currentInformationType->GetSuperType(), roleName, associationName);
 			}
 		}
 	}
-
 	return;
 }
 void FeatureCatalogue::SetInformationAssociationFromSuperType(InformationType* it, std::wstring superTypeName, std::wstring roleName, std::wstring associationName)
@@ -554,7 +404,6 @@ void FeatureCatalogue::SetInformationAssociationFromSuperType(InformationType* i
 	for (auto iti = informationTypes.GetInformationTypePointer().begin(); iti != informationTypes.GetInformationTypePointer().end(); iti++)
 	{
 		auto currentInformationType = &iti->second;
-		//auto currentInformationCode = currentInformationType->code.GetValueString();
 		auto currentInformationCode = currentInformationType->GetCodeAsWString();
 
 		if (superTypeName.compare(currentInformationCode) == 0)
@@ -566,7 +415,6 @@ void FeatureCatalogue::SetInformationAssociationFromSuperType(InformationType* i
 
 		if (superTypeName.compare(currentInformationType->GetSuperType()) == 0)
 		{
-			//AddInformationBinding(it, currentInformationType->code.GetValueString(), roleName, associationName);
 			AddInformationBinding(it, currentInformationType->GetCodeAsWString(), roleName, associationName);
 
 			if (currentInformationType->GetSuperType().size() > 0)
@@ -575,14 +423,12 @@ void FeatureCatalogue::SetInformationAssociationFromSuperType(InformationType* i
 			}
 		}
 	}
-
 	return;
 }
 
 void FeatureCatalogue::AddFeatureBinding(FeatureType* ft, std::wstring bindedTypeName, std::wstring roleName, std::wstring associationName)
 {
 	FeatureBinding fb;
-
 	fb.GetFeatureTypePointer().SetReference(bindedTypeName);
 	fb.GetRolePointer().SetReference(roleName);
 	fb.GetAssociationPointer().SetReference(associationName);
@@ -627,7 +473,6 @@ void FeatureCatalogue::NullCheckFieldOfApplication()
 	}
 }
 
-
 bool FeatureCatalogue::Read(std::wstring path)
 {
 	// FC (FileName) Loading start
@@ -641,36 +486,13 @@ bool FeatureCatalogue::Read(std::wstring path)
 	{
 		GetContents(displayList);
 		// FC (FileName) Loading complete
-//		//KRS_MSG_PROCESS::SendMessageToTargetWindow(KRS_MSG_INFO, L"S100FC:S100_FC_FeatureCatalogue loading", //KRS_MSG_PROCESS::Developer_Mode, //KRS_MSG_PROCESS::FC);
 		return true;
 	}
 	else
 	{
-//		//KRS_MSG_PROCESS::SendMessageToTargetWindow(KRS_MSG_ERROR, L"S100FC:S100_FC_FeatureCatalogue is null", //KRS_MSG_PROCESS::Developer_Mode, //KRS_MSG_PROCESS::FC);
 		return false;
 	}
 }
-
-
-//std::wstring FeatureCatalogue::GetFieldOfApplicationAsWString()
-//{
-//	if (nullptr != fieldOfApplication)
-//	{
-//		return *fieldOfApplication;
-//	}
-//
-//	return L"";
-//}
-
-//std::string FeatureCatalogue::GetFieldOfApplication()
-//{
-//	if (nullptr != fieldOfApplication)
-//	{
-//		return pugi::as_utf8(*fieldOfApplication);
-//	}
-//
-//	return "";
-//}
 
 InformationTypes& FeatureCatalogue::GetInformationTypesPointer()
 {
@@ -681,7 +503,6 @@ Roles& FeatureCatalogue::GetRolesPointer()
 {
 	return roles;
 }
-
 
 SimpleAttributes& FeatureCatalogue::GetSimpleAttributesPointer()
 {
@@ -757,14 +578,12 @@ const std::wstring& FeatureCatalogue::GetFieldOfApplication()
 void FeatureCatalogue::SetFieldOfApplication(std::string& value)
 {
 	NullCheckFieldOfApplication();
-
 	*fieldOfApplication = pugi::as_wide(value);
 }
 
 void FeatureCatalogue::SetFieldOfApplication(std::wstring& value)
 {
 	NullCheckFieldOfApplication();
-
 	*fieldOfApplication = value;
 }
 

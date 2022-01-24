@@ -6,61 +6,14 @@
 
 SimpleAttribute::SimpleAttribute()
 {
-}
 
+}
 
 SimpleAttribute::~SimpleAttribute()
 {
+
 }
 
-
-//void SimpleAttribute::GetContents(MSXML2::IXMLDOMNodePtr pNode)
-//{
-//	USES_CONVERSION;
-//
-//	((Attribute*)this)->Attribute::GetContents(pNode);
-//
-//	MSXML2::IXMLDOMNodeListPtr pNodeList = pNode->GetchildNodes();
-//
-//	int cnt = pNodeList->Getlength();
-//	for (int i = 0; i < cnt; i++) {
-//		MSXML2::IXMLDOMNodePtr pChildNode = pNodeList->Getitem(i);
-//		if (pChildNode == NULL)
-//			continue;
-//
-//		bstr_t bstr = pChildNode->baseName;
-//		if (!!bstr)
-//		{
-//			std::string baseName = std::string(W2A(bstr));
-//
-//			if (baseName.compare("valueType") == 0)
-//			{
-//				std::wstring value = pChildNode->Gettext();
-//				valueType = FCD::StringToS100_CD_AttributeValueType(value);
-//			}
-//			else if (baseName.compare("uom") == 0)
-//			{
-//				uom.GetContents(pChildNode);
-//			}
-//			else if (baseName.compare("quantitySpecification") == 0)
-//			{
-//				std::wstring value = pChildNode->Gettext();
-//				quantitySpecification = FCD::StringToS100_CD_QuantitySpecification(value);
-//			}
-//			else if (baseName.compare("constraints") == 0)
-//			{
-//				constraints.GetContents(pChildNode);
-//			}
-//			else if (baseName.compare("listedValues") == 0)
-//			{
-//				ListedValues lvs;
-//				lvs.GetContents(pChildNode);
-//				listedValues.push_back(lvs);
-//			}
-//		}
-//	}
-//	OutputDebugString(L"");
-//}
 void SimpleAttribute::GetContents(pugi::xml_node& node)
 {
 	((Attribute*)this)->Attribute::GetContents(node);
@@ -72,8 +25,6 @@ void SimpleAttribute::GetContents(pugi::xml_node& node)
 		{
 			std::string value = instruction.child_value();
 			valueType = FCD::StringToS100_CD_AttributeValueType(value);
-
-			//valueType.GetContents(instruction);
 		}
 		else if (!strcmp(instructionName, "S100FC:uom"))
 		{
@@ -110,7 +61,6 @@ void SimpleAttribute::SetValueType(FCD::S100_CD_AttributeValueType value)
 {
 	valueType = value;
 }
-
 
 FCD::S100_CD_QuantitySpecification SimpleAttribute::GetQuantitySpecification()
 {

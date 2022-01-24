@@ -1,5 +1,4 @@
 #pragma once
-
 #include "XML_Item.h"
 #include "IntervalType.h"
 
@@ -18,7 +17,6 @@ private:
 	IntervalType intervalType;
 
 public:
-	//void GetContents(MSXML2::IXMLDOMNodePtr pNode);
 	void GetContents(pugi::xml_node& node);
 
 	void SetLowerBound(double value);

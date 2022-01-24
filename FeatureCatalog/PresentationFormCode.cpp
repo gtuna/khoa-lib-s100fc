@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "PresentationFormCode.h"
 
-
 PresentationFormCode::PresentationFormCode()
 {
 	InsertValue(L"documentDigital");
@@ -19,18 +18,12 @@ PresentationFormCode::PresentationFormCode()
 	InsertValue(L"videoHardcopy");
 }
 
-
 PresentationFormCode::~PresentationFormCode()
 {
+
 }
 
-//void PresentationFormCode::GetContents(MSXML2::IXMLDOMNodePtr pNode)
-//{
-//	SetValueString(std::wstring(pNode->Gettext()));
-//	//valueString = pNode->Gettext();
-//}
 void PresentationFormCode::GetContents(pugi::xml_node& node)
 {
 	SetValueString(pugi::as_wide(node.child_value()));
-	//valueString = pugi::as_wide(node.child_value());
 }

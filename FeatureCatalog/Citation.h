@@ -1,5 +1,4 @@
 #pragma once
-
 #include "XML_Item.h"
 #include "Date.h"
 #include "PresentationFormCode.h"
@@ -34,7 +33,6 @@ private:
 	std::wstring ISSN = L"";
 
 public:
-	//void GetContents(MSXML2::IXMLDOMNodePtr pNode);
 	void GetContents(pugi::xml_node& node);
 
 	void SetTitle(char* value);

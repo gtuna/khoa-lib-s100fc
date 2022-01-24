@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Address.h"
 #include "Citation.h"
 #include "Contact.h"

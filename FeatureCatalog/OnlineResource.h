@@ -1,5 +1,4 @@
 #pragma once
-
 #include "XML_Item.h"
 #include "OnlineFunctionCode.h"
 
@@ -24,7 +23,6 @@ private:
 	std::string linkage = "";
 
 public:
-	//void GetContents(MSXML2::IXMLDOMNodePtr pNode);
 	void GetContents(pugi::xml_node& node);
 
 	void SetUrl(std::wstring value);
@@ -47,5 +45,4 @@ public:
 
 	void SetLinkage(std::string value);
 	const std::string& GetLinkage();
-
 };

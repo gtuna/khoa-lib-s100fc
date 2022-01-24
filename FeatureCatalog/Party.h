@@ -1,5 +1,4 @@
 #pragma once
-
 #include "XML_Item.h"
 #include "CI_Organisation.h"
 
@@ -17,8 +16,6 @@ private:
 
 public:
 	void GetContents(pugi::xml_node& node);
-
 	void SetCi_Organisation(CI_Organisation value);
 	CI_Organisation& GetCi_Organisation();
-
 };

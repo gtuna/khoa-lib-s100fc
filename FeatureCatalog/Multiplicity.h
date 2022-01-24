@@ -1,5 +1,4 @@
 #pragma once
-
 #include "XML_Item.h"
 #include "UnlimitedInteger.h"
 
@@ -17,7 +16,6 @@ private:
 	UnlimitedInteger upper;
 
 public:
-	//void GetContents(MSXML2::IXMLDOMNodePtr pNode);
 	void GetContents(pugi::xml_node& node);
 
 	void SetLower(int value);

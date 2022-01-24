@@ -3,10 +3,12 @@
 
 XML_Item::XML_Item()
 {
+
 }
 
 XML_Item::~XML_Item()
 {
+
 }
 
 void XML_Item::SetAttributes(std::list<XML_Attribute>& value)

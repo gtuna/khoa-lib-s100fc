@@ -1,12 +1,10 @@
 #include "stdafx.h"
 #include "UnitOfMeasure.h"
 
-//#include "..\\DLL_MessageProcess\DLL_MessageProcess.h"
-
 UnitOfMeasure::UnitOfMeasure()
 {
-}
 
+}
 
 UnitOfMeasure::~UnitOfMeasure()
 {
@@ -16,7 +14,6 @@ UnitOfMeasure::~UnitOfMeasure()
 		definition = nullptr;
 	}
 
-
 	if (symbol!=nullptr)
 	{
 		delete symbol;
@@ -24,39 +21,6 @@ UnitOfMeasure::~UnitOfMeasure()
 	}
 
 }
-
-//void UnitOfMeasure::GetContents(MSXML2::IXMLDOMNodePtr pNode)
-//{
-//	USES_CONVERSION;
-//
-//	MSXML2::IXMLDOMNodeListPtr pNodeList = pNode->GetchildNodes();
-//
-//	int cnt = pNodeList->Getlength();
-//	for (int i = 0; i < cnt; i++) {
-//		MSXML2::IXMLDOMNodePtr pChildNode = pNodeList->Getitem(i);
-//		if (pChildNode == NULL)
-//			continue;
-//		if (!pChildNode->baseName) 
-//			continue;
-//
-//		std::string baseName = std::string(W2A(pChildNode->baseName));
-//
-//		if (baseName.compare("name") == 0)
-//		{
-//			name = pChildNode->Gettext();
-//		}
-//		else if (baseName.compare("definition") == 0)
-//		{
-//			std::wstring value = pChildNode->Gettext();
-//			SetDefinition(value);
-//		}
-//		else if (baseName.compare("symbol") == 0)
-//		{
-//			std::wstring value = pChildNode->Gettext();
-//			SetSymbol(value);
-//		}
-//	}
-//}
 
 void UnitOfMeasure::GetContents(pugi::xml_node& node)
 {

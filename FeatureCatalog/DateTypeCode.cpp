@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "DateTypeCode.h"
 
-
 DateTypeCode::DateTypeCode()
 {
 	InsertValue(L"creation");
@@ -11,16 +10,10 @@ DateTypeCode::DateTypeCode()
 
 DateTypeCode::~DateTypeCode()
 {
-}
 
-//void DateTypeCode::GetContents(MSXML2::IXMLDOMNodePtr pNode)
-//{
-//	SetValueString(std::wstring(pNode->Gettext()));
-//	//valueString = pNode->Gettext();
-//}
+}
 
 void DateTypeCode::GetContents(pugi::xml_node& node)
 {
 	SetValueString(pugi::as_wide(node.child_value()));
-	//valueString = pugi::as_wide(node.child_value());
 }

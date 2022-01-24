@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "SpatialPrimitiveType.h"
 
-
 SpatialPrimitiveType::SpatialPrimitiveType()
 {
 	InsertValue(L"noGeometry");
@@ -16,12 +15,9 @@ SpatialPrimitiveType::SpatialPrimitiveType()
 
 SpatialPrimitiveType::~SpatialPrimitiveType()
 {
+
 }
 
-//void SpatialPrimitiveType::GetContents(MSXML2::IXMLDOMNodePtr pNode)
-//{
-//	SetValueString(std::wstring(pNode->Gettext()));
-//}
 void SpatialPrimitiveType::GetContents(pugi::xml_node& node)
 {
 	SetValueString(pugi::as_wide(node.child_value()));

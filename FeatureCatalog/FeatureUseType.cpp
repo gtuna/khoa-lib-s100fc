@@ -12,12 +12,8 @@ FeatureUseType::FeatureUseType()
 
 FeatureUseType::~FeatureUseType()
 {
-}
 
-//void FeatureUseType::GetContents(MSXML2::IXMLDOMNodePtr pNode)
-//{
-//	SetValueString(std::wstring(pNode->Gettext()));
-//}
+}
 
 void FeatureUseType::GetContents(pugi::xml_node& node)
 {

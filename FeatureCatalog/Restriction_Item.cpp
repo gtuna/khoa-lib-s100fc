@@ -3,9 +3,11 @@
 
 Restriction_Item::Restriction_Item()
 {
+
 }
 Restriction_Item::~Restriction_Item()
 {
+
 }
 
 void Restriction_Item::InsertValue(std::wstring value)

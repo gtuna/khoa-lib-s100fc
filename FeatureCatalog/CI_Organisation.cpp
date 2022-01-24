@@ -1,14 +1,14 @@
 #include "stdafx.h"
 #include "CI_Organisation.h"
 
-
 CI_Organisation::CI_Organisation()
 {
-}
 
+}
 
 CI_Organisation::~CI_Organisation()
 {
+
 }
 
 void CI_Organisation::GetContents(pugi::xml_node& node)
@@ -19,15 +19,12 @@ void CI_Organisation::GetContents(pugi::xml_node& node)
 		if (!strcmp(instructionName,"S100CI:name"))
 		{
 			SetName((char*)instruction.child_value());
-			//name = instruction.child_value();
 		}
 		else if (!strcmp(instructionName,"S100CI:contactInfo"))
 		{
-			//ContactInfo* value = new ContactInfo();
 			ContactInfo value;
 			value.GetContents(instruction);
 			SetContactinfo(value);
-			//contactinfo.GetContents(instruction);
 		}
 	}
 }

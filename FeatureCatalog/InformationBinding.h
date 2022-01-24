@@ -1,5 +1,4 @@
 #pragma once
-
 #include "XML_Item.h"
 #include "Multiplicity.h"
 #include "ValueList.h"
@@ -21,9 +20,7 @@ private:
 	Reference informationType;
 
 public:
-	//void GetContents(MSXML2::IXMLDOMNodePtr pNode);
 	void GetContents(pugi::xml_node& node);
-
 	Multiplicity&  GetMultiplicityPointer();
 	Reference& GetAssociationPointer();
 	Reference& GetRolePointer();

@@ -1,11 +1,9 @@
 #pragma once
-
 #include "XML_Item.h"
 
 #include "..\\extlibs\\pugixml\\include\\pugixml.hpp"
 
 #include <string>
-
 
 // S100_UnitOfMeasure
 class UnitOfMeasure : public XML_Item
@@ -20,7 +18,6 @@ private:
 	std::wstring* symbol = nullptr;
 
 public:
-	//void GetContents(MSXML2::IXMLDOMNodePtr pNode);
 	void GetContents(pugi::xml_node& node);
 
 	void SetName(std::wstring value);

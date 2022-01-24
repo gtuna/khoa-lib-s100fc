@@ -1,5 +1,4 @@
 #pragma once
-
 #include "XML_Attribute.h"
 
 #include <list>

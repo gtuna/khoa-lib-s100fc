@@ -1,5 +1,4 @@
 #pragma once
-
 #include "XML_Item.h"
 #include "Contact.h"
 #include "RoleCode.h"
@@ -25,7 +24,6 @@ private:
 	Party party;
 
 public:
-	//void GetContents(MSXML2::IXMLDOMNodePtr pNode);
 	void GetContents(pugi::xml_node& node);
 
 	void SetIndividualName(std::wstring value);
@@ -45,5 +43,4 @@ public:
 
 	void SetParty(Party value);
 	Party &GetParty();
-
 };

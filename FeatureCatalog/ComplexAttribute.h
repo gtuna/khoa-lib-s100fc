@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Item.h"
 #include "AttributeBinding.h"
 
@@ -16,7 +15,6 @@ private:
 	std::list<AttributeBinding> subAttributeBinding;
 
 public:
-	//void GetContents(MSXML2::IXMLDOMNodePtr pNode);
 	void GetContents(pugi::xml_node& node);
 
 	void SetSubAttributeBinding(AttributeBinding value);
@@ -25,4 +23,3 @@ public:
 	AttributeBinding GetSubAttributeBinding(int index);
 	std::list<AttributeBinding>& GetSubAttributeBindingPointer();
 };
-
