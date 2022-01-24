@@ -1,5 +1,4 @@
 #pragma once
-
 #include "NamedType.h"
 
 #include "..\\extlibs\\pugixml\\include\\pugixml.hpp"
@@ -17,7 +16,6 @@ private:
 	Reference role[2];
 
 public:
-	//void GetContents(MSXML2::IXMLDOMNodePtr pNode);
 	void GetContents(pugi::xml_node& node);
 
 	const std::wstring& GetSuperType();

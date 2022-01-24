@@ -1,14 +1,14 @@
 #include "stdafx.h"
 #include "ContactInfo.h"
 
-
 ContactInfo::ContactInfo()
 {
-}
 
+}
 
 ContactInfo::~ContactInfo()
 {
+
 }
 
 void ContactInfo::GetContents(pugi::xml_node& node) 
@@ -18,18 +18,15 @@ void ContactInfo::GetContents(pugi::xml_node& node)
 		const pugi::char_t *instructionName = instruction.name();
 		if (!strcmp(instructionName,"S100CI:address"))
 		{
-			Address add;// = new Address();
+			Address add;
 			add.GetContents(instruction);
 			SetAddress(add);
-			//address.GetContents(instruction);
 		}
 		else if (!strcmp(instructionName, "S100CI:onlineResource"))
 		{
-			OnlineResource online;// = new OnlineResource();
+			OnlineResource online;
 			online.GetContents(instruction);
 			SetOnlineResource(online);
-
-			//onlineResource.GetContents(instruction);
 		}
 	}
 }

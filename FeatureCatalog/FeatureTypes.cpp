@@ -1,45 +1,16 @@
 #include "StdAfx.h"
 #include "FeatureTypes.h"
 
-//#include "..\\DLL_MessageProcess\DLL_MessageProcess.h"
-
 FeatureTypes::FeatureTypes(void)
 {
-	//featureType = NULL;
+
 }
 
 FeatureTypes::~FeatureTypes(void)
 {
+
 }
 
-//void FeatureTypes::GetContents(MSXML2::IXMLDOMNodePtr pNode)
-//{
-//	USES_CONVERSION;
-//
-//	MSXML2::IXMLDOMNodeListPtr pNodeList = pNode->GetchildNodes();
-//
-//	int cnt = pNodeList->Getlength();
-//	for (int i = 0; i < cnt; i++) {
-//		MSXML2::IXMLDOMNodePtr pChildNode = pNodeList->Getitem(i);
-//		if (pChildNode == NULL)
-//			continue;
-//		bstr_t bstr = pChildNode->baseName;
-//		if (!!bstr)//?
-//		{
-//			std::string baseName = std::string(bstr);
-//
-//			if (baseName.compare("S100_FC_FeatureType") == 0)
-//			{
-//				FeatureType ft;
-//				ft.GetContents(pChildNode);
-//				featureType.insert({ ft.GetCodeAsWString(), ft });
-//			}
-//		}
-//	}
-//
-//	//// Super Type 
-//	ApplySuperType();
-//}
 void FeatureTypes::GetContents(pugi::xml_node& node)
 {
 	for (pugi::xml_node instruction = node.first_child(); instruction; instruction = instruction.next_sibling())
@@ -58,21 +29,16 @@ void FeatureTypes::GetContents(pugi::xml_node& node)
 				attr.Setvalue((char*)instruction.attribute("isAbstract").value());
 				SetAttributes(attr);
 			}
-			//KRS_MSG_PROCESS::SendMessageToTargetWindow(KRS_MSG_INFO, L"S100FC:S100_FC_FeatureType Setting clear", //KRS_MSG_PROCESS::Developer_Mode, //KRS_MSG_PROCESS::FC);
-		}
-		else
-		{
-			//KRS_MSG_PROCESS::SendMessageToTargetWindow(KRS_MSG_INFO, L"S100FC another data value", //KRS_MSG_PROCESS::User_Developer_Mode, //KRS_MSG_PROCESS::FC);
 		}
 	}
 	ApplySuperType();
 }
+
 void FeatureTypes::ApplySuperType()
 {
 	for (auto itor = featureType.begin(); itor != featureType.end(); itor++)
 	{
 		FeatureType *ft = &itor->second;
-
 		SetAttributeFromSuperType(ft);
 		SetAssociationFromSuperType(ft);
 	}

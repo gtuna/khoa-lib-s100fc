@@ -3,42 +3,14 @@
 
 FeatureAssociations::FeatureAssociations(void)
 {
-	//featureAssociation = NULL;
-}
 
+}
 
 FeatureAssociations::~FeatureAssociations(void)
 {
+
 }
 
-//void FeatureAssociations::GetContents(MSXML2::IXMLDOMNodePtr pNode)
-//{
-//	USES_CONVERSION;
-//
-//	MSXML2::IXMLDOMNodeListPtr pNodeList = pNode->GetchildNodes();
-//
-//	int cnt = pNodeList->Getlength();
-//	for (int i = 0; i < cnt; i++) {
-//		MSXML2::IXMLDOMNodePtr pChildNode = pNodeList->Getitem(i);
-//		if (pChildNode == NULL)
-//			continue;
-//
-//		if (!pChildNode->baseName)
-//			continue;
-//
-//		std::string baseName = std::string(W2A(pChildNode->baseName));
-//
-//		if (baseName.compare("S100_FC_FeatureAssociation") == 0)
-//		{
-//			FeatureAssociation fa;
-//			fa.GetContents(pChildNode);
-//			featureAssociation.insert(
-//				//std::unordered_map<std::wstring, FeatureAssociation>::value_type(fa.code.GetValueString(), fa)
-//				std::unordered_map<std::wstring, FeatureAssociation>::value_type(fa.GetCodeAsWString(), fa)
-//			);
-//		}
-//	}
-//}
 void FeatureAssociations::GetContents(pugi::xml_node& node)
 {
 	for (pugi::xml_node instruction = node.first_child(); instruction; instruction = instruction.next_sibling())
@@ -48,7 +20,6 @@ void FeatureAssociations::GetContents(pugi::xml_node& node)
 		{
 			FeatureAssociation sa;
 			sa.GetContents(instruction);
-			//featureAssociation[sa.code.GetValueString()] = sa;
 			featureAssociation[sa.GetCodeAsWString()] = sa;
 
 			if (instruction.attribute("isAbstract"))

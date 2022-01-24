@@ -1,5 +1,4 @@
 #pragma once
-
 #include "XML_Item.h"
 #include "NumericRange.h"
 
@@ -19,7 +18,6 @@ public:
 	int precision = 0;
 
 public:
-	//void GetContents(MSXML2::IXMLDOMNodePtr pNode);
 	void GetContents(pugi::xml_node& node);
 
 	int GetStringLength();

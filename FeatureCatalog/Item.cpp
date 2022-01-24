@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "Item.h"
 
-
 Item::Item()
 {
+
 }
 
 Item::Item(const Item& item) : Item()
@@ -20,53 +20,6 @@ Item::~Item()
 	remarks = nullptr;
 }
 
-
-//void Item::GetContents(MSXML2::IXMLDOMNodePtr pNode)
-//{
-//	USES_CONVERSION;
-//
-//	MSXML2::IXMLDOMNodeListPtr pNodeList = pNode->GetchildNodes();
-//
-//	int cnt = pNodeList->Getlength();
-//	for (int i = 0; i < cnt; i++) {
-//		MSXML2::IXMLDOMNodePtr pChildNode = pNodeList->Getitem(i);
-//		if (pChildNode == NULL)
-//			continue;
-//
-//		if (!pChildNode->baseName)
-//			continue;
-//
-//		std::string baseName = std::string(W2A(pChildNode->baseName));
-//
-//		if (baseName.compare("name") == 0)
-//		{
-//			name = pChildNode->Gettext();
-//		}
-//		else if (baseName.compare("definition") == 0)
-//		{
-//			definition = pChildNode->Gettext();
-//		}
-//		else if (baseName.compare("code") == 0)
-//		{
-//			//code.GetContents(pChildNode);
-//			std::wstring value = pChildNode->Gettext();
-//			SetCode(value);
-//		}
-//		else if (baseName.compare("remarks") == 0)
-//		{
-//			std::wstring value = pChildNode->Gettext();
-//			SetRemarks(value);
-//		}
-//		else if (baseName.compare("alias") == 0)
-//		{
-//			alias.push_back(std::wstring(pChildNode->Gettext()));
-//		}
-//		else if (baseName.compare("definitionReference") == 0)
-//		{
-//			definitionReference.GetContents(pChildNode);
-//		}
-//	}
-//}
 void Item::GetContents(pugi::xml_node& node)
 {
 	for (pugi::xml_node instruction = node.first_child(); instruction; instruction = instruction.next_sibling())
@@ -83,8 +36,6 @@ void Item::GetContents(pugi::xml_node& node)
 		}
 		else if (!strcmp(instructionName, "S100FC:code"))
 		{
-			//code.GetContents(instruction);
-			
 			std::string value = instruction.child_value();
 			SetCode(value);
 		}
@@ -116,7 +67,6 @@ bool Item::CompareCode(std::wstring& value)
 	{
 		return true;
 	}
-
 	return false;
 }
 
@@ -171,14 +121,12 @@ void Item::NullCheckRemarks()
 void Item::SetRemarks(std::string& value)
 {
 	NullCheckRemarks();
-
 	*remarks = pugi::as_wide(value);
 }
 
 void Item::SetRemarks(std::wstring& value)
 {
 	NullCheckRemarks();
-
 	*remarks = value;
 }
 
@@ -188,7 +136,6 @@ const std::string Item::GetRemarks()
 	{
 		return pugi::as_utf8(*remarks);
 	}
-
 	return "";
 }
 
@@ -198,7 +145,6 @@ const std::wstring Item::GetRemarksAsWString()
 	{
 		return *remarks;
 	}
-
 	return L"";
 }
 
@@ -208,10 +154,8 @@ const bool Item::IsEmptyRemarks()
 	{
 		return remarks->empty();
 	}
-
 	return true;
 }
-
 
 std::list<std::wstring>& Item::GetAliasPointer()
 {
@@ -232,6 +176,5 @@ Item& Item::operator = (const Item& item)
 
 		*this->remarks = *item.remarks;
 	}
-
 	return *this;
 }

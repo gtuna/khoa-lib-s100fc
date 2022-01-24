@@ -1,14 +1,14 @@
 #include "stdafx.h"
 #include "Party.h"
 
-
 Party::Party()
 {
-}
 
+}
 
 Party::~Party()
 {
+
 }
 
 void Party::GetContents(pugi::xml_node& node)
@@ -23,7 +23,6 @@ void Party::GetContents(pugi::xml_node& node)
 	}
 }
 
-
 void Party::SetCi_Organisation(CI_Organisation value) 
 {
 	ci_Organisation = value;
@@ -33,4 +32,3 @@ CI_Organisation& Party::GetCi_Organisation()
 {
 	return ci_Organisation;
 }
-

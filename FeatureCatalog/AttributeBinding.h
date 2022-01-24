@@ -1,5 +1,4 @@
 #pragma once
-
 #include "XML_Item.h"
 #include "ValueList.h"
 #include "Multiplicity.h"
@@ -20,15 +19,11 @@ private:
 	Reference attribute;
 
 public:
-	//void GetContents(MSXML2::IXMLDOMNodePtr pNode);
 	void GetContents(pugi::xml_node& node);
-
 	void SetMultiplicity(Multiplicity value);
 	Multiplicity& GetMultiplicity();
-
 	void SetPermittedValues(ValueList value);
 	ValueList& GetPermittedValues();
-
 	void SetAttribute(Reference value);
 	Reference& GetAttribute();
 };

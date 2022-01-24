@@ -1,5 +1,4 @@
 #pragma once
-
 #include "XML_Item.h"
 #include "Citation.h"
 
@@ -16,10 +15,8 @@ private:
 	Citation source;
 	
 public:
-	//void GetContents(MSXML2::IXMLDOMNodePtr pNode);
 	void GetContents(pugi::xml_node& node);
 
 	void SetSource(Citation value);
 	Citation& GetSource();
 };
-

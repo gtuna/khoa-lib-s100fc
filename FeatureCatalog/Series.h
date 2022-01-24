@@ -1,5 +1,4 @@
 #pragma once
-
 #include "XML_Item.h"
 
 #include "..\\extlibs\\pugixml\\include\\pugixml.hpp"
@@ -16,7 +15,6 @@ private:
 	std::wstring page = L"";
 
 public:
-	//void GetContents(MSXML2::IXMLDOMNodePtr pNode);
 	void GetContents(pugi::xml_node& node);
 
 	void SetName();
@@ -27,5 +25,4 @@ public:
 
 	void SetPage(std::wstring valeu);
 	const std::wstring& GetPage();
-
 };

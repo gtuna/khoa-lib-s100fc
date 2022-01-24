@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "RoleCode.h"
 
-
-
 RoleCode::RoleCode()
 {
 	InsertValue(L"resourceProvider");
@@ -17,15 +15,10 @@ RoleCode::RoleCode()
 	InsertValue(L"publisher");
 }
 
-
 RoleCode::~RoleCode()
 {
-}
 
-//void RoleCode::GetContents(MSXML2::IXMLDOMNodePtr pNode)
-//{
-//	SetValueString(std::wstring(pNode->Gettext()));
-//}
+}
 
 void RoleCode::GetContents(pugi::xml_node& node)
 {

@@ -22,7 +22,6 @@ class SimpleAttribute;
 class ComplexAttribute;
 class FeatureType;
 class InformationType;
-
 // S100_FC_FeatureCatalogue
 class FeatureCatalogue
 {
@@ -32,10 +31,13 @@ public:
 	virtual ~FeatureCatalogue();
 
 private:
-	// std::wstring product = L""; 
 	std::wstring name = L"";
 	std::wstring scope = L"";
-	std::wstring *fieldOfApplication = nullptr; 
+
+private:
+	std::wstring *fieldOfApplication = nullptr;  
+
+private:
 	std::wstring versionNumber = L"";
 	std::wstring versionDate = L""; 
 	std::wstring filePath = L"";
@@ -44,7 +46,6 @@ private:
 	ResponsibleParty producer; 
 	// FC_DefinitionSource 
 	DefinitionSources definitionSources; 
-
 	SimpleAttributes simpleAttributes;
 	ComplexAttributes complexAttributes;
 	Roles roles;
@@ -54,8 +55,7 @@ private:
 	FeatureTypes featureTypes; 
 
 public:
-	/* Search infomation */
-	//void GetContents(MSXML2::IXMLDOMNodePtr pNode);
+	bool Read(std::wstring filePath);
 	void GetContents(pugi::xml_node& node);
 
 	const std::wstring& GetName();
@@ -81,9 +81,6 @@ public:
 	const std::wstring& GetVersionDate();
 	void SetVersionDate(std::string value);
 	void SetVersionDate(std::wstring value);
-
-	//ResponsibleParty producer;
-	//DefinitionSources definitionSources;
 
 	SimpleAttribute* GetSimpleAttribute(std::wstring Code);
 	SimpleAttribute* GetSimpleAttributeFromName(std::wstring name);

@@ -1,5 +1,4 @@
 #pragma once
-
 #include "InformationAssociation.h"
 
 #include "..\\extlibs\\pugixml\\include\\pugixml.hpp"
@@ -15,8 +14,6 @@ private:
 	std::unordered_map<std::wstring, InformationAssociation> informationAssociation;
 
 public:
-	//void GetContents(MSXML2::IXMLDOMNodePtr pNode);
 	void GetContents(pugi::xml_node& node);
-
 	std::unordered_map<std::wstring, InformationAssociation>& GetInformationAssociationPointer();
 };

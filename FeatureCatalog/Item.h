@@ -1,5 +1,4 @@
 #pragma once
-
 #include "XML_Item.h"
 #include "StringCode.h"
 #include "DefinitionReference.h"
@@ -26,7 +25,6 @@ private:
 	DefinitionReference definitionReference; 
 
 public:
-	//void GetContents(MSXML2::IXMLDOMNodePtr pNode);
 	void GetContents(pugi::xml_node& node);
 
 	bool CompareCode(std::string& value);

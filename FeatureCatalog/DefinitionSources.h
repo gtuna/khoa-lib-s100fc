@@ -1,5 +1,4 @@
 #pragma once
-
 #include "XML_Item.h"
 #include "DefinitionSource.h"
 
@@ -18,13 +17,9 @@ private:
 	std::unordered_map<std::wstring, DefinitionSource> definitionSource;
 
 public:
-	//void GetContents(MSXML2::IXMLDOMNodePtr pNode);
 	void GetContents(pugi::xml_node& node);
-
 	void SetSourceIdentifier(std::wstring value);
 	std::wstring& GetSourceIdentifier();
-
 	void SetDefinitionSource(std::unordered_map<std::wstring, DefinitionSource> value);
 	std::unordered_map<std::wstring, DefinitionSource>& GetDefinitionSource();
 };
-

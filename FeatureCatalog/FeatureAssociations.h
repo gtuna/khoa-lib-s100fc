@@ -1,8 +1,7 @@
 #pragma once
+#include "FeatureAssociation.h"
 
 #include "..\\extlibs\\pugixml\\include\\pugixml.hpp"
-
-#include "FeatureAssociation.h"
 
 class FeatureAssociations :
 	public XML_Item
@@ -15,8 +14,6 @@ private:
 	std::unordered_map<std::wstring, FeatureAssociation> featureAssociation;
 	
 public:
-	//void GetContents(MSXML2::IXMLDOMNodePtr pNode);
 	void GetContents(pugi::xml_node& node);
-
 	std::unordered_map<std::wstring, FeatureAssociation>& GetFeatureAssociationPointer();
 };

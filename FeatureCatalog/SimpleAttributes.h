@@ -1,5 +1,4 @@
 #pragma once
-
 #include "XML_Item.h"
 #include "SimpleAttribute.h"
 
@@ -15,8 +14,6 @@ private:
 	std::unordered_map<std::wstring, SimpleAttribute*> simpleAttribute;
 
 public:
-	//void GetContents(MSXML2::IXMLDOMNodePtr pNode);
 	void GetContents(pugi::xml_node& node);
-
 	std::unordered_map<std::wstring, SimpleAttribute*>& GetSimpleAttributePointer();
 };

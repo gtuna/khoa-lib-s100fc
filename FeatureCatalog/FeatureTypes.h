@@ -1,7 +1,5 @@
 #pragma once
-
 #include "XML_Item.h"
-
 #include "FeatureType.h"
 
 #include "..\\extlibs\\pugixml\\include\\pugixml.hpp"
@@ -17,9 +15,7 @@ private:
 	std::unordered_map<std::wstring, FeatureType> featureType;
 	
 public:
-	//void GetContents(MSXML2::IXMLDOMNodePtr pNode);
 	void GetContents(pugi::xml_node& node);
-
 	void ApplySuperType();
 	bool SetAttributeFromSuperType(FeatureType* ft);
 	bool SetAssociationFromSuperType(FeatureType* ft);

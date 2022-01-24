@@ -1,43 +1,16 @@
 #include "stdafx.h"
 #include "Date.h"
 
-//#include "..\\DLL_MessageProcess\DLL_MessageProcess.h"
 Date::Date()
 {
-}
 
+}
 
 Date::~Date()
 {
+
 }
 
-
-
-//void Date::GetContents(MSXML2::IXMLDOMNodePtr pNode)
-//{
-//	USES_CONVERSION;
-//
-//	MSXML2::IXMLDOMNodeListPtr pNodeList = pNode->GetchildNodes();
-//
-//	int cnt = pNodeList->Getlength();
-//	for (int i = 0; i < cnt; i++) {
-//		MSXML2::IXMLDOMNodePtr pChildNode = pNodeList->Getitem(i);
-//		if (pChildNode == NULL)
-//			continue;
-//		if (!pChildNode->baseName)
-//			continue;
-//
-//		std::string baseName = std::string(W2A(pChildNode->baseName));
-//		if (baseName.compare("date") == 0)
-//		{
-//			date.GetContents(pChildNode);
-//		}
-//		else if (baseName.compare("dateType") == 0)
-//		{
-//			dateType.GetContents(pChildNode);
-//		}
-//	}
-//}
 void Date::GetContents(pugi::xml_node& node)
 {
 	for (pugi::xml_node instruction = node.first_child(); instruction; instruction = instruction.next_sibling())
@@ -48,19 +21,15 @@ void Date::GetContents(pugi::xml_node& node)
 			DateExt* dateData = new DateExt();
 			dateData->GetContents(instruction);
 			SetDate(*dateData);
-
-			//date.GetContents(instruction);
 		}
 		else if (!strcmp(instructionName, "S100CI:dateType"))
 		{
 			DateTypeCode* DatetypeCode = new DateTypeCode();
 			DatetypeCode->GetContents(instruction);
 			SetDateType(*DatetypeCode);
-			//dateType.GetContents(instruction);
 		}
 		else  //unspecified value 
 		{
-//			//KRS_MSG_PROCESS::SendMessageToTargetWindow(KRS_MSG_INFO, L"S100FC another data value",//KRS_MSG_PROCESS::User_Developer_Mode,//KRS_MSG_PROCESS::FC);
 		}
 	}
 }

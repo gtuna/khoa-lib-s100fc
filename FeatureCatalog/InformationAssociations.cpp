@@ -1,45 +1,16 @@
 #include "stdafx.h"
 #include "InformationAssociations.h"
 
-
-
 InformationAssociations::InformationAssociations()
 {
-}
 
+}
 
 InformationAssociations::~InformationAssociations()
 {
+
 }
 
-//void InformationAssociations::GetContents(MSXML2::IXMLDOMNodePtr pNode)
-//{
-//	USES_CONVERSION;
-//
-//	MSXML2::IXMLDOMNodeListPtr pNodeList = pNode->GetchildNodes();
-//
-//	int cnt = pNodeList->Getlength();
-//	for (int i = 0; i < cnt; i++) {
-//		MSXML2::IXMLDOMNodePtr pChildNode = pNodeList->Getitem(i);
-//		if (pChildNode == NULL)
-//			continue;
-//
-//		if (!pChildNode->baseName)
-//			continue;
-//
-//		std::string baseName = std::string(W2A(pChildNode->baseName));
-//
-//		if (baseName.compare("S100_FC_InformationAssociation") == 0)
-//		{
-//			InformationAssociation ia;
-//			ia.GetContents(pChildNode);
-//			informationAssociation.insert(
-//				//std::unordered_map<std::wstring, InformationAssociation>::value_type(ia.code.GetValueString(), ia)
-//				std::unordered_map<std::wstring, InformationAssociation>::value_type(ia.GetCodeAsWString(), ia)
-//			);
-//		}
-//	}
-//}
 void InformationAssociations::GetContents(pugi::xml_node& node)
 {
 	for (pugi::xml_node instruction = node.first_child(); instruction; instruction = instruction.next_sibling())
@@ -49,7 +20,6 @@ void InformationAssociations::GetContents(pugi::xml_node& node)
 		{
 			InformationAssociation sa;
 			sa.GetContents(instruction);
-			//informationAssociation[sa.code.GetValueString()] = sa;
 			informationAssociation[sa.GetCodeAsWString()] = sa;
 			if (instruction.attribute("isAbstract"))
 			{

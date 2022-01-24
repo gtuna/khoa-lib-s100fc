@@ -1,5 +1,4 @@
 #pragma once
-
 #include "S100ObjectType.h"
 
 #include "..\\extlibs\\pugixml\\include\\pugixml.hpp"
@@ -16,11 +15,8 @@ private:
 	std::list<std::wstring> subType; 
 
 public:
-	//void GetContents(MSXML2::IXMLDOMNodePtr pNode);
 	void GetContents(pugi::xml_node& node);
-
 	const std::wstring& GetSuperType(); 
 	void SetSuperType(std::wstring value);
-
 	std::list<std::wstring>& GetSubTypePointer(); 
 }; 
