@@ -1,9 +1,5 @@
 #pragma once
 
-//#ifndef __AFXWIN_H__
-//	#error "PCH에 대해 이 파일을 포함하기 전에 'stdafx.h'를 포함합니다."
-//#endif
-
 #include "ResponsibleParty.h"
 #include "DefinitionSources.h"
 #include "SimpleAttributes.h"
@@ -35,24 +31,24 @@ private:
 	std::wstring scope = L"";
 
 private:
-	std::wstring *fieldOfApplication = nullptr;  
+	std::wstring* fieldOfApplication = nullptr;
 
 private:
 	std::wstring versionNumber = L"";
-	std::wstring versionDate = L""; 
+	std::wstring versionDate = L"";
 	std::wstring filePath = L"";
 
 	// CI_Responsibility 
-	ResponsibleParty producer; 
+	ResponsibleParty producer;
 	// FC_DefinitionSource 
-	DefinitionSources definitionSources; 
+	DefinitionSources definitionSources;
 	SimpleAttributes simpleAttributes;
 	ComplexAttributes complexAttributes;
 	Roles roles;
 	InformationAssociations informationAssociations;
 	FeatureAssociations featureAssociations;
 	InformationTypes informationTypes;
-	FeatureTypes featureTypes; 
+	FeatureTypes featureTypes;
 
 public:
 	bool Read(std::wstring filePath);
@@ -65,7 +61,7 @@ public:
 	const std::wstring& GetFilePath();
 	void SetFilePath(std::string value);
 	void SetFilePath(std::wstring value);
-	
+
 	const std::wstring& GetScope();
 	void SetScope(std::string value);
 	void SetScope(std::wstring value);
@@ -85,7 +81,7 @@ public:
 	SimpleAttribute* GetSimpleAttribute(std::wstring Code);
 	SimpleAttribute* GetSimpleAttributeFromName(std::wstring name);
 	SimpleAttributes& GetSimpleAttributesPointer();
-	
+
 	ComplexAttribute* GetComplexAttribute(std::wstring Code);
 	ComplexAttribute* GetComplexAttributeFromName(std::wstring name);
 	ComplexAttributes& GetComplexAttributesPointer();
@@ -123,8 +119,4 @@ public:
 	void AddInformationBinding(InformationType* it, std::wstring bindedTypeName, std::wstring roleName, std::wstring associationName);
 
 	void NullCheckFieldOfApplication();
-
-	bool Read(std::wstring path);
-	
-	
 };
